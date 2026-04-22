@@ -1,0 +1,13 @@
+[
+    {
+      "cycle": "10"
+    },
+    {
+      "type": "RSS",
+      "URL": "https://cacm.acm.org/feeds-2/"
+    },
+    {
+      "type": "Image",
+      "URL": "https://picsum.photos/800/1400" 
+    }
+  ] 

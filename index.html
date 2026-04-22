@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Signage</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+
+    <!-- Header -->
+    <div id="header">
+      <span class="header-brand">&#9632; Digital Signage</span>
+      <span class="header-date" id="header-date"></span>
+    </div>
+
+    <!-- Progress bar -->
+    <div id="progress-bar-track">
+      <div id="progress-bar"></div>
+    </div>
+
+    <!-- Main content area -->
+    <div id="main">
+
+      <!-- Sidebar: Clock + Weather -->
+      <div id="sidebar">
+
+        <div id="clock-widget">
+          <div class="widget-label">Clock</div>
+          <canvas id="clock-canvas" width="170" height="170"></canvas>
+        </div>
+
+        <div>
+          <div class="widget-label">Weather &mdash; Denver, CO</div>
+          <div id="weather-widget">
+            <div class="weather-icon">⏳</div>
+            <div class="weather-temp">--°F</div>
+            <div class="weather-condition">Loading...</div>
+          </div>
+        </div>
+
+        <div id="slide-counter-wrap">
+          <span id="slide-counter">-- / --</span>
+        </div>
+
+      </div>
+
+      <!-- Slide Stage -->
+      <div id="slide-stage" style="opacity:0;">
+        <!-- Slides rendered here by app.js -->
+      </div>
+
+    </div><!-- /#main -->
+  </div><!-- /#app -->
+
+  <!-- Scripts (no libraries) -->
+  <script src="clock.js"></script>
+  <script src="weather.js"></script>
+  <script src="app.js"></script>
+
+  <script>
+    // Live date in header
+    function updateHeaderDate() {
+      const el = document.getElementById('header-date');
+      if (!el) return;
+      const now = new Date();
+      el.textContent = now.toLocaleDateString('en-US', {
+        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+      });
+    }
+    updateHeaderDate();
+    setInterval(updateHeaderDate, 60000);
+  </script>
+</body>
+</html> 
